@@ -41,7 +41,7 @@ namespace execution{
 		struct no_env{
 			friend void tag_invoke(auto, std::same_as<no_env> auto, auto&&...) = delete;
 		};
-        struct empty_env{}; // ???
+        struct empty_env{};
         struct get_env_t{
 		    template<typename R> requires tag_invocable<get_env_t, R&&>
 		    [[nodiscard]] auto operator()(R&& r) const noexcept(nothrow_tag_invocable<get_env_t, R&&>)->tag_invoke_result_t<get_env_t, R&&>{
